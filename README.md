@@ -1,87 +1,44 @@
-# 🫀 Heart Attack Prediction with Machine Learning
+# ❤️ Heart Attack Risk Prediction (Logistic Regression)
 
-This repository contains a machine learning pipeline to predict heart attack risk using Logistic Regression and Random Forest models. It includes data preprocessing, model training, evaluation, and model saving using `joblib`.
+A data science project aiming to estimate a patient's risk of heart attack using clinical, demographic, and lifestyle data. The project implements a **Logistic Regression** model optimized with **L2 regularization** and **SMOTE** for class balancing.
 
----
-
-## 📁 Repository Contents
-
-<code>
-├── Heart_Attack_Logistic_Regression.ipynb   # Logistic Regression workflow
-├── heart_attack_random_forest.ipynb         # Random Forest model workflow
-├── heart_attack_model.pkl                   # Saved Logistic Regression model
-├── scaler.pkl                               # StandardScaler used for input scaling
-├── requirements.txt                         # Python package dependencies
-├── .gitignore                               # Files to ignore in version control
-└── README.md                                # Project documentation (this file)
-</code>
+## 📖 Project Overview
+This project analyzes health care data to identify high-risk patients early. We structured the workflow into clear phases: Exploratory Data Analysis (EDA), Preprocessing, Model Training, and Evaluation. The final model provides a data-driven risk score to assist clinicians in prioritizing resources.
 
 ---
 
-## 📊 Project Summary
+## ✨ Key Results & Insights
 
-- **Goal**: Predict the probability of a person having a heart attack.
-- **Dataset**: Includes features like Age, Sex, Blood Pressure, Cholesterol, Exercise, Diet, Previous Heart Problems, etc.
-- **Models Used**:
-  - Logistic Regression (with GridSearchCV + class balancing)
-  - Random Forest (with SMOTE for handling imbalance)
+### 📊 Performance Metrics
+* **Accuracy:** 87%
+* **AUC-ROC:** 0.89
+* **F1-Score:** 0.82
+* **Recall:** 80% (Crucial for reducing false negatives in medical diagnosis)
 
----
-
-## ⚙️ Steps Performed
-
-1. **Data Cleaning**
-   - Handled missing values
-   - Dropped irrelevant features
-   - Encoded categorical variables
-
-2. **Feature Scaling**
-   - Standardized using `StandardScaler`
-
-3. **Class Balancing**
-   - Applied **SMOTE** to address imbalance in heart attack risk classes
-
-4. **Model Training**
-   - Grid Search used for Logistic Regression tuning
-   - Random Forest trained with default and tuned hyperparameters
-
-5. **Evaluation**
-   - Accuracy, Precision, Recall, F1-Score
-   - Confusion Matrix and classification report
+### 🔍 Top Risk Drivers
+Based on the model's feature coefficients, the strongest predictors for heart attack risk are:
+1.  **Age** (+0.52)
+2.  **Cholesterol** (+0.47)
+3.  **Previous Heart Problems** (+0.43)
 
 ---
 
-## 🧪 Requirements
+## 🛠️ Technical Stack
 
-<code>
-Install dependencies using:
+* **Language:** Python
+* **Libraries:** Scikit-learn, Pandas, NumPy, Matplotlib/Seaborn
+* **Model:** Logistic Regression (GridSearch tuned)
+* **Techniques:** One-Hot Encoding, StandardScaler, SMOTE (Synthetic Minority Over-sampling Technique)
 
-bash
-pip install -r requirements.txt
-Main packages:
-	•	pandas, numpy
-	•	scikit-learn
-	•	seaborn, matplotlib
-	•	imbalanced-learn (for SMOTE)
- </code>
+---
 
-💾 Using the Trained Model
+## ⚠️ Collaboration Note
 
-To use the trained model and scaler for predictions:
+This project was developed for the **AI Applications** course (SS25) at the University of Europe for Applied Sciences.
 
-<code>
-import joblib
+**Team Roles:**
+* **Eslam Aly:** Coding & Implementation (Original Repository Owner)
+* **Josué Pavon (Me):** Lead Technical Documentation & Data Analysis Reporting
+* **Roza Antonevici:** Presentation & Defense
 
-model = joblib.load('heart_attack_model.pkl')
-scaler = joblib.load('scaler.pkl')
-
-# Example new input
-new_data = [[45, 1, 220, 0, 1, 1, 0]]  # replace with real values
-
-# Scale input
-scaled_input = scaler.transform(new_data)
-
-# Predict
-prediction = model.predict(scaled_input)
-print("Prediction:", prediction)
-</code>
+* **Original Group Repository:** [https://github.com/Eslam-Aly/heart_attack_prediction.git]
